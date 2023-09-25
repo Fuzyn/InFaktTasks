@@ -37,6 +37,13 @@
                 </label>
               </div>
 
+              <div class="form-group">
+                <label class="form-label">
+                  <span>Date</span>
+                  <%= f.date_field :termination_date, min: 0.days.ago %>
+                </label>
+              </div>
+
               <button type="submit" class="btn btn-success">Save</button>
             <% end %>
           </div>

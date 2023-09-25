@@ -2,7 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.sort_by do |task|
+      [task[:termination_date].nil? ? 1 : 0, task[:termination_date]]
+    end
   end
 
   def new
@@ -31,6 +33,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description, :title, :termination_date)
   end
 end
